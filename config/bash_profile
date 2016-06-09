@@ -22,11 +22,13 @@ export MANPATH="/usr/man:/usr/local/man:/opt/local/man:$MANPATH"
 # PATH is set in .bashrc
 
 # Basic behavior and interaction configuration
-export EDITOR=vi
+
+#export EDITOR=vi
 export PAGER=less
 export LESS="-d -f -X -R"
+
 # use vi for editing on the command line
-set -o vi
+#set -o vi
 
 # aliases for commands
 #
@@ -43,8 +45,15 @@ export LSCOLORS="Exfxcxdxbxegedabagacad"
 # https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
 source ~/.git-prompt.sh
 
-# Set the prompt on an interactive shell
-source ~/config/colors_for_bash
+# Put the working directory in the titlebar
+TITLEBAR='\[\033]0;\h:\w\007\]' # \h = hostname \W = working directory
+
+##############################
+# Configuration for the prompt 
+##############################
+
+# some fun unicode characters set to variables so they're easier to include
+# in the prompt
 FANCY_FLOWER="\342\235\200"  # fancy unicode character for the prompt
 FANCY_SPLAT="\342\234\273"  # fancy unicode character for the prompt
 FANCY_BIGSPLAT="\342\235\211"  # fancy unicode character for the prompt
@@ -53,39 +62,11 @@ FANCY_FISH="\360\237\220\237"  # fancy unicode character for the prompt
 FANCY_TULIP="\360\237\214"  # fancy unicode character for the prompt
 FANCY_SAKURA="\360\237\214"  # fancy unicode character for the prompt
 
+# export PS1="${TITLEBAR}\[$Blue\]\h\[$Cyan\]$FANCY_FLOWER \[$Blue\]\w$FANCY_FISH \[$Color_Off\]$(__git_ps1 ' (%s)') "
+export PS1='\[\e]0;\u@\h: \w\a\]\h:\w:'
 #export PS1="\h:\w: "
 
-#STARTCOLOR='\[\e[0;35m\]'
-#ENDCOLOR="\[\e[0m\]"
-#export PS1="$STARTCOLOR\h:\w: $ENDCOLOR"
-
-# The beginning is to tell iterm2 to put the working directory up thereL
-TITLEBAR='\[\033]0;\h:\w\007\]' # \h = hostname \W = working directory
-export PS1="${TITLEBAR}\[$Blue\]\h\[$Cyan\]$FANCY_FLOWER \[$Blue\]\w$FANCY_FISH \[$Color_Off\]$(__git_ps1 ' (%s)') "
-# the git stuff at the end is supposed to be for the git prompt
-# but it's not working
-
-# for mutt, should help maintain transparency of mutt's windows
-export COLORFGBG="default;default"
-
-alias mutt='mutt -F .muttrc_home'
-alias work='mutt -F .muttrc_work'
-
-# MacPorts wanted this
-export PATH=/opt/local/bin:/opt/local/sbin:/sbin:$PATH
-
-
-##
-# Your previous /Users/holly/.bash_profile file was backed up as /Users/holly/.bash_profile.macports-saved_2016-01-13_at_19:17:44
-##
-
-# MacPorts Installer addition on 2016-01-13_at_19:17:44: adding an appropriate PATH variable for use with MacPorts.
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
-# Finished adapting your PATH environment variable for use with MacPorts.
-
-
-export NVM_DIR="/Users/holly/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-# added by Anaconda3 4.0.0 installer
-export PATH="//anaconda/bin:$PATH"
+#########################################################################
+# Stuff that programs like macports, nvm, etc., need will be automatically
+# added below here
+#########################################################################
