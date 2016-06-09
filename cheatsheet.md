@@ -20,19 +20,27 @@ cp [currentFile] [copyName]	# copy a file
 cp [myDir/*] [otherDir/] 	# copy everything in myDir into otherDir
 cp -r [dirName] [newName]	# make a duplicate of a directory
 rm [fileName] 			# remove (delete) file
-rm -rf [dirName]	 		# recursively remove a directory, w/out asking
-touch [newFile] 			# create an empty file
-cat [this] > [that]			# put the contents of this into that
-cat [this] >> [that] 		# append the content of this to that
+rm -rf [dirName]	 	# recursively remove a directory, w/out asking
+touch [newFile] 		# create an empty file
+cat [thisFile] > [thatFile]		# put the contents of this into that
+cat [thisFile] >> [thatFile] 	# append the content of this to that
 ```
 Getting info:
 ```bash
 man [commandName] 	# how do I use this command?
 ls -Flah 			# list EVERYTHING in the directory, with human-readable units
+ls *.jpg 			# only show me jpegs
 less [fileName] 	# cat the file to stdout (look inside the file w/out opening)
 file [fileName] 	# find out what kind of file it is
-top -o cpu 		# list all processes, sorted by cpu load
 pwd 			# print working directory (get your full path)
+history 		# what have I been doing?
+grep [searchTerm] [path] # search inside files
+grep button * 	# which files in this directory contain the word button
+grep [commonWord] [largeDir] | less # make it easier to read long output 
+top -o cpu 		# list all processes, sorted by cpu load
+ps aux 			# show me all my processes
+ps aux | grep Chrome # show me all my processes with Chrome in the name
+ps aux | grep Chrome | less # and then pipe it to less because too long
 ```
 
 Tasks:
