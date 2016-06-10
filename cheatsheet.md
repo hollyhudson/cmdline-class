@@ -1,7 +1,7 @@
 ## Command Line Cheat Sheet
 
 Folders are called directories in Unix.
-[Brackets indicate optional input.] Never type the brackets.
+[Brackets indicate optional input.] Don't type the brackets.
 
 Note: You can always put a path in place of a fileName.  For example:
 ```bash
