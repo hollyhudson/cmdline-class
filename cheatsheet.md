@@ -55,13 +55,15 @@ Tasks:
 ```bash
 open . 				# opens finder with the current dir in focus
 open [fileName.jpg] # opens the image in preview, works with pdfs
+source [fileName or command] # evaluates the file or command 	
 kill [pid] 			# kill process with the process id [pid]
 kill -9 [pid] 		# no really kill it
 killall "Chrome" 	# kill all processes with Chrome in the name
-shutdown
-echo [whatever] 	# print whatever to stdout
-echo [whatever] > [fileName] # print whatever into a file
-say [whatever] 		# make your computer talk
+shutdown -h now 	# shutdown your computer now
+shutdown -h now 	# restart your computer now
+echo [whatever] 				# print whatever to stdout
+echo [whatever] > [fileName] 	# print whatever into a file
+say [whatever] 					# make your computer talk
 ```
 
 Permissions.  For more on the numbering system, check out the wikipedia page on chmod:
