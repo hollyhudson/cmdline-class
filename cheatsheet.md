@@ -1,9 +1,19 @@
+## Command Line Cheat Sheet
+
 Folders are called directories in Unix.
 [Brackets indicate optional input.] Never type the brackets.
 
 Note: You can always put a path in place of a fileName.  For example:
 ```bash
 cp notes css/mynotes 	# make a copy of notes, put it in css, call it mynotes
+```
+
+Many command have a version and a help option:
+```bash
+[command] --version
+[command] -v
+[command] --help
+[command] -h
 ```
 
 Navigation:
@@ -14,11 +24,12 @@ cd ../js  	# go up a directory, then into the js directory
 clear 		# clear the screen (but not your history)
 ```
 
-Manipulating files. __(Warning: when using **rm** always stop and
-think before you hit enter.  There is no trash can on the command
-line.  Once it's gone it's gone.  NEVER type rm -rf * inside the
-root directory, or anywhere you care about, really)__
+__(Warning: when using **rm** always stop and think before you hit
+enter.  There is no trash can on the command line.  Once it's gone
+it's gone forever.  NEVER type rm -rf * inside the root directory,
+or anywhere you care about, really)__
 
+Manipulating files:
 ```bash
 mv [currentName] [newName] 	# move file (rename)
 cp [currentFile] [copyName]	# copy a file
@@ -31,6 +42,7 @@ mkdir [dirName] 		# create an empty directory
 cat [file1] [file2] > [thatFile]		# put the contents of these into that
 cat [thisFile] >> [thatFile] 	# append the content of this to that
 ```
+
 Getting info:
 ```bash
 man [commandName] 	# how do I use this command?
