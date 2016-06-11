@@ -16,6 +16,11 @@ Many command have a version and a help option:
 [command] -h
 ```
 
+To give yourself a simple prompt that includes the working directory, enter the following at the prompt:
+```bash
+export PS1="\h:\w: "
+```
+
 Navigation:
 ```bash
 cd [dirName] # change directory
