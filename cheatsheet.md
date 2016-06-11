@@ -61,6 +61,9 @@ ps aux | grep -i chrome # show me all my processes with Chrome in the name
 ps aux | grep -i chrome | less # and then pipe it to less because too long
 df -h 	# how much disk space is being used (human-readable units)
 du -h 	# how big are our files?
+date
+cal 2014 
+cal 1752 	# what's up with September?
 ```
 
 Tasks:
