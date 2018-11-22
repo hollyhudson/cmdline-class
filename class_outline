@@ -1,0 +1,10 @@
+Installing stuff:
+
+trans
+
+
+Shell scripting:
+
+write saynl.sh, chmod so you can run it, check with ll, is ~/bin in your path?
+
+

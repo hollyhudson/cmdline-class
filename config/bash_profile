@@ -1,72 +1,132 @@
 #/bin/bash
-# Last updated by holly 15 feb 2015
+# Last updated by holly 21 nov 2018
 #
 # This file is for configuring the interactive shell (when a human is using
 # the command line, as opposed to a program running an automated set of
 # commands).  Aliases for commands and things that make the shell
-# pretty go here, not in .bashrc.  This file sources .bashrc, but
-# .bashrc does not source this file.
+# pretty go here, not in .bashrc.  
+#
+# This file sources .bashrc, but .bashrc does not source this file.
 
+
+# if .bashrc exists, source it
 if [ -f ~/.bashrc ]; then
 	source ~/.bashrc
 fi
 
-# Turn on noclobber
-set -o noclobber
+#########################################################################
+# Path configuration
+#########################################################################
+
+# PATH is set in .bashrc, other path stuff is here
+export MANPATH="/usr/man:/usr/local/man:/opt/local/man:$MANPATH"
+
+#########################################################################
+# Editing and viewing files
+#########################################################################
+
+# Editing and viewing files
+#export EDITOR=vi
+#export EDITOR=nano
+export PAGER=less
+export LESS="-d -f -X -R"
+
+#########################################################################
+# Behavior on the command line
+#########################################################################
+
+# what editor we're using on the command line
+#set -o vi
+#set -o nano
+#set -o emacs
 
 # Makes your backspace key work like a backspace key
 stty erase ^? 
 
-# Path configuration
-export MANPATH="/usr/man:/usr/local/man:/opt/local/man:$MANPATH"
-# PATH is set in .bashrc
+# Turn on noclobber, so you won't accidently overwrite existing files
+# when using redirects (eg. cat "some stuff" > myImportantFile won't work)
+set -o noclobber
 
-# Basic behavior and interaction configuration
+#########################################################################
+# Aliases
+#########################################################################
 
-#export EDITOR=vi
-export PAGER=less
-export LESS="-d -f -X -R"
-
-# use vi for editing on the command line
-#set -o vi
-
-# aliases for commands
-#
-# G for Syntax highlighting
+# G is for colored output
 alias ls="ls -G"
 # alias ls='ls --color' # for linux
-
-alias vi="/usr/bin/vi"
 
 # Configure the colors ls uses.  See man ls to see what the setting mean
 export LSCOLORS="Exfxcxdxbxegedabagacad"
 
-# for git prompt, which is totally not working
+# F: with symbols, l: long, a: all, including dotfiles, h: human-readable units
+alias ll="ls -FlahG"
+
+# you can specify a path for a command if you need to with an alias
+# alias vi="/usr/bin/vi"
+
+alias timenyc="TZ=America/New_York date"
+alias timeams="TZ=Europe/Amsterdam date"
+
+#########################################################################
+# Git configuration
+#########################################################################
+
+alias s="git status"
+
+# for git prompt, first put git-prompt.sh in your home dir:
 # https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
+# must have \$(__git_ps1 ' (%s)') in your PS1, the \ is important!
 source ~/.git-prompt.sh
+
+#########################################################################
+# Prompt
+#########################################################################
 
 # Put the working directory in the titlebar
 TITLEBAR='\[\033]0;\h:\w\007\]' # \h = hostname \W = working directory
 
-##############################
-# Configuration for the prompt 
-##############################
+# this is a plain, simple prompt with just hostname:working_dir:
+export PS1="\h:\w: "
+
+# slightly more complex prompt with colors and git info
+#export PS1="${TITLEBAR}\[$Blue\]\h:\w:\[$Color_Off\]\$(__git_ps1 ' (%s)') "
+
+# prompt with unicode emojis in it, 
+# it's pretty but it can sometimes cause issues with line wrapping
+#export PS1="${TITLEBAR}\[$Blue\]\h\[$Cyan\]$U_FLOWER \[$Blue\]\w$U_FISH \[$Color_Off\]\$(__git_ps1 ' (%s)') "
 
 # some fun unicode characters set to variables so they're easier to include
 # in the prompt
-FANCY_FLOWER="\342\235\200"  # fancy unicode character for the prompt
-FANCY_SPLAT="\342\234\273"  # fancy unicode character for the prompt
-FANCY_BIGSPLAT="\342\235\211"  # fancy unicode character for the prompt
-FANCY_BUG="\360\237\220\236"  # fancy unicode character for the prompt
-FANCY_FISH="\360\237\220\237"  # fancy unicode character for the prompt
-FANCY_TULIP="\360\237\214"  # fancy unicode character for the prompt
-FANCY_SAKURA="\360\237\214"  # fancy unicode character for the prompt
-
-# export PS1="${TITLEBAR}\[$Blue\]\h\[$Cyan\]$FANCY_FLOWER \[$Blue\]\w$FANCY_FISH \[$Color_Off\]$(__git_ps1 ' (%s)') "
-export PS1='\[\e]0;\u@\h: \w\a\]\h:\w:'
-#export PS1="\h:\w: "
+U_FLOWER="\342\235\200"  # fancy unicode character for the prompt
+U_SPLAT="\342\234\273"  # fancy unicode character for the prompt
+U_BIGSPLAT="\342\235\211"  # fancy unicode character for the prompt
+U_BUG="\360\237\220\236"  # fancy unicode character for the prompt
+U_FISH="\360\237\220\237"  # fancy unicode character for the prompt
+U_TULIP="\360\237\214"  # fancy unicode character for the prompt
+U_SAKURA="\360\237\214"  # fancy unicode character for the prompt
 
 #########################################################################
-# Stuff that programs like macports, nvm, etc., need will be automatically
-# added below here
+# Greeting
+#########################################################################
+
+echo ""
+echo ""
+echo ""
+printf "                      Hello human!\n"
+echo ""
+printf "$U_TEA \n"
+printf "  it's $(date +"%H:%M"). how are you?\n"
+printf "  have you...                 \n"
+printf "   - taken a break lately?         \n"
+printf "   - stood and stretched?         \n"
+printf "   - done some meditation?       \n"
+printf "   - fixed some tea?          \n"
+printf "                       have a lovely day\n"
+echo ""
+printf "$U_SPROUT  $U_SPROUT  $U_SPROUT      $U_WHEAT  $U_WHEAT     $U_HERB  $U_HERB  $U_HERB\n"
+echo ""
+
+#########################################################################
+# Stuff that programs like macports, nvm, etc., might automatically
+# appear below
 #########################################################################

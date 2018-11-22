@@ -1,3 +1,5 @@
+## Things to add
+
 ## Command Line Cheat Sheet
 
 Folders are called directories in Unix.
@@ -8,12 +10,12 @@ Note: You can always put a path in place of a fileName.  For example:
 cp notes css/mynotes 	# make a copy of notes, put it in css, call it mynotes
 ```
 
-Many command have a version and a help option:
+Many (not all) commands have a version and a help option:
 ```bash
-[command] --version
-[command] -v
-[command] --help
-[command] -h
+someCommand --version
+someCommand -v
+someCommand --help
+someCommand -h
 ```
 
 To give yourself a simple prompt that includes the working directory, enter the following at the prompt:
@@ -101,3 +103,8 @@ scp [server]:[filePath] . 	# securely copies a file from the server to your curr
 scp roundcube.swcp.com:/Users/me/myFile . 	# for example
 ```
 
+## Resources
+
+Configuring the bash prompt: [https://linuxconfig.org/bash-prompt-basics](https://linuxconfig.org/bash-prompt-basics).
+
+tldr instead of man: [https://tldr.sh](https://tldr.sh).
