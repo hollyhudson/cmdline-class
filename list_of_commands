@@ -6,7 +6,6 @@ pwd
 cp
 mv
 rm
-history
 man
 file
 cat
@@ -19,21 +18,26 @@ top
 ps
 df
 du
+history and > ! 161
+which
 ping
 traceroute
 date
 cal
-open
+open (mac)
 source
 kill
 killall
 shutdown
+reboot (pi)
 chmod
 chown
 sudo
 passwd
 ssh
 scp
+exit
+~.[enter] to quit ssh when it dies and won't give you your prompt back
 echo
 export
 say
