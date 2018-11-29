@@ -18,4 +18,21 @@ terms:
 - recursive
 - regular expressions, *
 
+Installing stuff:
+- tldr
+- trans
+- git prompt
 
+
+Shell scripting:
+- write saynl.sh, chmod so you can run it, check with ll, is ~/bin in your path?
+
+mkdir public_html, and place index.html style.css and interaction.js in it.
+
+Digital Ocean instance:
+
+- sudo to edit main web page on instance to add a link to your own  (you'll need to find the root password from another clue)
+
+Pi:
+
+- create another user account

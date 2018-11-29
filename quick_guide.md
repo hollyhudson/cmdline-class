@@ -30,6 +30,9 @@ If you lose your prompt, try `ctrl-c`.
 
 - `which`
 - `man [command]` - show the manual page for the command (try man shutdown, for instance)
+- `[command] --version`
+- `[command] --help`
+- `tldr [command]` - more beginner-friendly than `man`, but it doesn't come standard, you'll need to download and install it
 
 ### About Files
 
@@ -137,8 +140,9 @@ If you lose your prompt, try `ctrl-c`.
 
 ## Remote Administration
 
-### Loggin In and Out
+### Logging In and Out
 
+- `ssh-keygen` - generate an rsa key to use when logging in to a remote machine.  It will be saved in `~/.ssh/` Remember your passphrase if you want to log in again
 - `ssh [username]@[hostname]` example: `ssh holly@myDomain.com`
 - `ssh [username]@[ipAddress]` example: `ssh holly@192.168.1.32`
 - `ssh -l [username] [hostname]` example: `ssh -l holly myDomain.com`
@@ -161,24 +165,3 @@ You can set nicknames for hosts in `/etc/hosts` if you're feeling brave.
 
 - `sudo [command]`
 
-### Commands
-### Activity
-
-Installing stuff:
-
-trans
-
-
-Shell scripting:
-
-write saynl.sh, chmod so you can run it, check with ll, is ~/bin in your path?
-
-mkdir public_html, and place index.html style.css and interaction.js in it.
-
-Digital Ocean instance:
-
-sudo to edit main web page on instance to add a link to your own
-
-Pi:
-
-Create another user account
