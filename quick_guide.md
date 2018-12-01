@@ -14,6 +14,8 @@ If you lose your prompt, try `ctrl-c`.
 
 ## Manipulating Files
 
+### Creating, Deleting, and Moving Files
+
 - `cp [originalFileName] [copyFileName]` - copy (duplicate) a file
 - `mv [oldFileName] [newFileName]` - move (rename) a file
 - `rm [fileName]` - remove (delete) a file, use with caution
@@ -23,6 +25,33 @@ If you lose your prompt, try `ctrl-c`.
 - `cp -r [originalDir] [copyDir]` - copy (duplicate, recursively) a directory, if copyDir exists it will now contain the contents of both directories
 - `mv [oldDir] [newDir]` - move (rename) a directory, if newDir exists oldDir will be placed inside newDir
 - `rm -rf [dirName]` - remove a directory, recursively, force it, be VERY careful with this command
+
+### File Redirection
+
+- `cat [fileName]` - print contents of fileName to the screen (like less, but not as nice)
+- `cat [thisFile] > [thatFile]` - overwrite thatFile with the contents of thisFile, unless "noclobber" is set
+- `cat [thisFile] >> [thatFile]` - append the contents of thisFile to thatFile
+- `echo "Here is some content" > [fileName]` - overwrite fileName with the content in quotes, unless "noclobber" is set
+- `echo "Here is some content" >> [fileName]` - append what's in quotes to fileName
+- `[command] > [fileName]` - send the output of the command to the file
+- `ls > [fileName]` - fileName now contains a list of files
+
+- `source [thisFile]` - execute commands in thisFile in this shell, useful for loading your bash config file
+
+- `nano`
+- `vi`
+
+### Permissions
+
+- `chmod a+r [fileName]` - give all users read permission
+- `chmod a+rwx [fileName]` - give all users read, write, and execute permission
+- `chmod a-x [fileName]` - remove execute permission for everyone
+- `chown [user] [fileName]` - give ownership of fileName to user
+- `chown frodo rings/the_one`
+
+### Symlinks
+
+- `ln -s`
 
 ## Getting Information
 
@@ -80,6 +109,8 @@ If you lose your prompt, try `ctrl-c`.
 - `brew install [command]` - on mac
 - `apt-get install [command]` - on Debian and Raspbian
 
+- `apt-get install git` - for example
+
 ### Stopping Things
 
 - `ctrl-z` stop, but don't kill, a process
@@ -95,33 +126,6 @@ If you lose your prompt, try `ctrl-c`.
 
 - `clear` - clear the screen, does not clear your history
 
-### File Redirection
-
-- `cat [fileName]` - print contents of fileName to the screen (like less, but not as nice)
-- `cat [thisFile] > [thatFile]` - overwrite thatFile with the contents of thisFile, unless "noclobber" is set
-- `cat [thisFile] >> [thatFile]` - append the contents of thisFile to thatFile
-- `echo "Here is some content" > [fileName]` - overwrite fileName with the content in quotes, unless "noclobber" is set
-- `echo "Here is some content" >> [fileName]` - append what's in quotes to fileName
-- `[command] > [fileName]` - send the output of the command to the file
-- `ls > [fileName]` - fileName now contains a list of files
-
-- `source [thisFile]` - execute commands in thisFile in this shell, useful for loading your bash config file
-
-- `nano`
-- `vi`
-
-### Permissions
-
-- `chmod a+r [fileName]` - give all users read permission
-- `chmod a+rwx [fileName]` - give all users read, write, and execute permission
-- `chmod a-x [fileName]` - remove execute permission for everyone
-- `chown [user] [fileName]` - give ownership of fileName to user
-- `chown frodo rings/the_one`
-
-### Symlinks
-
-- `ln -s`
-
 ### Git
 
 - `git clone [paste from github]` 
@@ -131,12 +135,12 @@ If you lose your prompt, try `ctrl-c`.
 - `git commit -m "comment on what has changed with this commit"` 
 - `git push` 
 
-
 ### Mac Only
 
-- `say` 
-- `open`
-
+- `say "some phrase"` - speaks the text
+- `[command] | say` - speaks the output of the command
+- `open [fileName]` - will open the file with the appropriate app, unzipping if necessary
+- `open [path]` - will open the directory specified.  Try `open .` and `open /`
 
 ## Remote Administration
 
@@ -165,3 +169,26 @@ You can set nicknames for hosts in `/etc/hosts` if you're feeling brave.
 
 - `sudo [command]`
 
+### Users and Groups
+
+The following commands must be run as root or with `sudo`.
+
+- `useradd -m [username] -p [password]` - add a user and assign them a password
+
+The user can then log on and use the `passwd` command to change their password.
+
+- `groupadd [groupname]` - add a group
+- `usermod -a -G [groupname] [username]` - put a user in a group, (append the user to the group)
+
+## Odds and Ends
+
+Pipe `|` "pipes" the output of the first command into the second command.
+
+`ls | less` - is useful for directories with so many files they scroll off the screen
+
+- `!!` - bang-bang, run last command
+- `[command] !! - run the command with the arguments of the last command
+- `file /long/path/to/file/do/not/want/to/type/again` - shows file type of `again`
+- `rm !!` - deletes the file `again` referenced in the previous command 
+- `sudo !!` - run the last command as root (this one is so useful some people alias it to "oops" or more colorful words
+- `![command]` - run the command [command] exactly as it was run the last time (for when you don't want to type all the arguments again)
