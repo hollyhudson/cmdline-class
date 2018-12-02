@@ -3,7 +3,7 @@
 ## Basic Structure of a Command
 
 ```
-> command argument1 argument2 argument3[enter]
+> command argument1 argument2 argument3{enter}
 ```
 
 Arguments can be flags (settings for the command), filenames, paths, or strings.
@@ -23,16 +23,24 @@ If you want to pass a string that has spaces, you can enclose it in quotes:
 
 ## Filesystem Navigation
 
-command | description
-------- | -----------
-ls | list files
-file [fileName] | show file type
-less [fileName] | a "pager" that shows contents of fileName (`q` to quit)
-cd [directoryName] | change directory to directoryName
-cd | with no arguments you'll go to your home directory
-cd .. | go back to the parent directory
-cd - | go back to where you were before you ran cd the last time
-pwd | print working directory
+<dl>
+<dt>ls</dt>
+<dd>list files</dd>
+<dt>file {fileName}</dt>
+<dd>show file type</dd>
+<dt>less {fileName}</dt>
+<dd>a "pager" that shows contents of fileName (`q` to quit)</dd>
+<dt>cd {directoryName}</dt>
+<dd>change directory to directoryName</dd>
+<dt>cd</dt>
+<dd>with no arguments you'll go to your home directory</dd>
+<dt>cd ..</dt>
+<dd>go back to the parent directory</dd>
+<dt>cd -</dt>
+<dd>go back to where you were before you ran cd the last time</dd>
+<dt>pwd</dt>
+<dd>print working directory</dd>
+</dl>
 
 If you lose your prompt, try `ctrl-c`.
 
@@ -40,210 +48,363 @@ If you lose your prompt, try `ctrl-c`.
 
 ### Creating, Deleting, and Moving Files
 
-command | description
-------- | -----------
-cp {originalFileName} {copyFileName} | copy (duplicate) a file
-mv {oldFileName} {newFileName} | move (rename) a file
-rm {fileName} | remove (delete) a file, use with caution
-touch {fileName} | make a new, empty file, or update the timestamp on an existing file
-mkdir [newDirName] | make a new, empty directory
-cp -r [originalDir] [copyDir] | copy (duplicate, recursively) a directory, if copyDir exists it will now contain the contents of both directories
-mv [oldDir] [newDir] | move (rename) a directory, if newDir exists oldDir will be placed inside newDir
-rm -rf [dirName] | remove a directory, recursively, force it, be VERY careful with this command
+<dl>
+<dt>cp {originalFileName} {copyFileName}</dt>
+<dd>copy (duplicate) a file</dd>
+<dt>mv {oldFileName} {newFileName}</dt>
+<dd>move (rename) a file</dd>
+<dt>rm {fileName}</dt>
+<dd>remove (delete) a file, use with caution</dd>
+<dt>touch {fileName}</dt>
+<dd>make a new, empty file, or update the timestamp on an existing file</dd>
+<dt>mkdir {newDirName}</dt>
+<dd>make a new, empty directory</dd>
+<dt>cp -r {originalDir} {copyDir}</dt>
+<dd>copy (duplicate, recursively) a directory, if copyDir exists it will now contain the contents of both directories</dd>
+<dt>mv {oldDir} {newDir}</dt>
+<dd>move (rename) a directory, if newDir exists oldDir will be placed inside newDir</dd>
+<dt>rm -rf {dirName}</dt>
+<dd>remove a directory, recursively, force it, be VERY careful with this command</dd>
+</dl>
 
 ### File Redirection
 
-- `cat [fileName]` - print contents of fileName to the screen (like less, but not as nice)
-- `cat [thisFile] > [thatFile]` - overwrite thatFile with the contents of thisFile, unless "noclobber" is set
-- `cat [thisFile] >> [thatFile]` - append the contents of thisFile to thatFile
-- `echo "Here is some content" > [fileName]` - overwrite fileName with the content in quotes, unless "noclobber" is set
-- `echo "Here is some content" >> [fileName]` - append what's in quotes to fileName
-- `[command] > [fileName]` - send the output of the command to the file
-- `ls > [fileName]` - fileName now contains a list of files
-- `source [thisFile]` - execute commands in thisFile in this shell, useful for loading your bash config file
-- `nano`
-- `vi`
+<dl>
+<dt>cat {fileName}</dt>
+<dd>print contents of fileName to the screen (like less, but not as nice)</dd>
+<dt>cat {thisFile} > {thatFile}</dt>
+<dd>overwrite thatFile with the contents of thisFile, unless "noclobber" is set</dd>
+<dt>cat {thisFile} >> {thatFile}</dt>
+<dd>append the contents of thisFile to thatFile</dd>
+<dt>echo "Here is some content" > {fileName}</dt>
+<dd>overwrite fileName with the content in quotes, unless "noclobber" is set</dd>
+<dt>echo "Here is some content" >> {fileName}</dt>
+<dd>append what's in quotes to fileName</dd>
+<dt>{command} > {fileName}</dt>
+<dd>send the output of the command to the file</dd>
+<dt>ls > {fileName}</dt>
+<dd>fileName now contains a list of files</dd>
+<dt>source {thisFile}</dt>
+<dd>execute commands in thisFile in this shell, useful for loading your bash config file</dd>
+<dt>nano</dt>
+<dt>vi</dt>
+</dl>
 
 ### Permissions
 
-- `chmod a+r [fileName]` - give all users read permission
-- `chmod a+rwx [fileName]` - give all users read, write, and execute permission
-- `chmod a-x [fileName]` - remove execute permission for everyone
-- `chown [user] [fileName]` - give ownership of fileName to user
-- `chown frodo rings/the_one`
+<dl>
+<dt>chmod a+r {fileName}</dt>
+<dd>give all users read permission</dd>
+<dt>chmod a+rwx {fileName}</dt>
+<dd>give all users read, write, and execute permission</dd>
+<dt>chmod a-x {fileName}</dt>
+<dd>remove execute permission for everyone</dd>
+<dt>chown {user} {fileName}</dt>
+<dd>give ownership of fileName to user</dd>
+<dt>chown frodo rings/the_one</dt>
+</dl>
 
 ### Symlinks
 
-- `ln -s [originalFile] [symlinkFile]` - create a file that is just a link to another file
-- `ln -s ~/dotfiles/bashrc .bashrc` - make your .bashrc a symlink to the file in your dotfiles directory
+<dl>
+<dt>ln -s {originalFile} {symlinkFile}</dt>
+<dd>create a file that is just a link to another file</dd>
+<dt>ln -s ~/dotfiles/bashrc .bashrc</dt>
+<dd>make your .bashrc a symlink to the file in your dotfiles directory</dd>
+</dl>
 
 ## Getting Information
 
 ### About Commands
 
-- `ls -Flah` - list all files with all the details (aka "long list")
-- `which [command]` - shows you the path to the command, no output means either the command is not installed or it is not in your path
-- `man [command]` - show the manual page for the command (try man shutdown, for instance)
-- `[command] --version`
-- `[command] --help`
-- `tldr [command]` - more beginner-friendly than `man`, but it doesn't come standard, you'll need to download and install it
+<dl>
+<dt>ls -Flah</dt>
+<dd>list all files with all the details (aka "long list")</dd>
+<dt>which {command}</dt>
+<dd>shows you the path to the command, no output means either the command is not installed or it is not in your path</dd>
+<dt>man {command}</dt>
+<dd>show the manual page for the command (try man shutdown, for instance)</dd>
+<dt>{command} --version`</dt>
+<dt>{command} --help`</dt>
+<dt>tldr {command}</dt>
+<dd>more beginner-friendly than `man`, but it doesn't come standard, you'll need to download and install it</dd>
+</dl>
 
 ### About Files
 
-- `file [fileName]` - show file type
-- `less [fileName]` - a "pager" that shows contents of fileName (`q` to quit)
-- `find [dirName] -name ['kitten.png']` - find files recursively in dirName
-- `find [dirName] -name '*.png'` - find all png images in dirName
-- `grep [string] *` - show files in current directory that contain the string
-- `grep -iR [string] [dirName]` - show files in dirName that contain the string, case-insensitive, recursively
-- `grep [string] [dirName]` - show files in dirName that contain the word (or number or whatever)
-- `grep ['string with spaces'] [dirName]` - show files in dirName that contain the phrase
+<dl>
+<dt>file {fileName}</dt>
+<dd>show file type</dd>
+<dt>less {fileName}</dt>
+<dd>a "pager" that shows contents of fileName (`q` to quit)</dd>
+<dt>find {dirName} -name {'kitten.png'}</dt>
+<dd>find files recursively in dirName</dd>
+<dt>find {dirName} -name '*.png'</dt>
+<dd>find all png images in dirName</dd>
+<dt>grep {string} *</dt>
+<dd>show files in current directory that contain the string</dd>
+<dt>grep -iR {string} {dirName}</dt>
+<dd>show files in dirName that contain the string, case-insensitive, recursively</dd>
+<dt>grep {string} {dirName}</dt>
+<dd>show files in dirName that contain the word (or number or whatever)</dd>
+<dt>grep {'string with spaces'} {dirName}</dt>
+<dd>show files in dirName that contain the phrase</dd>
+</dl>
 
 ### About Your Computer
 
-- `uname -a` - print (all) information about the computer
-- `top` - list all process with memory and cpu usage (like Activity Monitor on the Mac or Task Manager on Windows)
-- `top -o cpu` - sort by cpu usage
-- `ps aux` - list all currently running processes
-- `ps aux | grep -i Chrome` - list all running processes with Chrome or chrome in the name
-- `du -h [dirName]` - show sizes of all files in dirName with human-readable units (useful if you're trying to delete large files because you've run out of space)
-- `df -h` - show an overview of filesystem space usage with human-readable units
+<dl>
+<dt>uname -a</dt>
+<dd>print (all) information about the computer</dd>
+<dt>top</dt>
+<dd>list all process with memory and cpu usage (like Activity Monitor on the Mac or Task Manager on Windows)</dd>
+<dt>top -o cpu</dt>
+<dd>sort by cpu usage</dd>
+<dt>ps aux</dt>
+<dd>list all currently running processes</dd>
+<dt>ps aux | grep -i Chrome</dt>
+<dd>list all running processes with Chrome or chrome in the name</dd>
+<dt>du -h {dirName}</dt>
+<dd>show sizes of all files in dirName with human-readable units (useful if you're trying to delete large files because you've run out of space)</dd>
+<dt>df -h</dt>
+<dd>show an overview of filesystem space usage with human-readable units</dd>
+</dl>
 
 ### About the Network
 
-- `ping [url]` - see if a server or site it up, will also report connection quality
-- `traceroute [url]` - report the path from your computer to the site or server
+<dl>
+<dt>ping {url}</dt>
+<dd>see if a server or site it up, will also report connection quality</dd>
+<dt>traceroute {url}</dt>
+<dd>report the path from your computer to the site or server</dd>
+</dl>
 
 ### About Your Environment
 
-- `jobs` - list all processes your user is currently running (see bg & fg)
-- `history` - list previously run commands (what did I just do??)
-- `echo "hello there!"` - print stuff to the screen
-- `echo [$ENVIRONMENT_VARIABLE]` - print the value
-- `echo $PATH` - prints the path bash uses to find commands for you
+<dl>
+<dt>jobs</dt>
+<dd>list all processes your user is currently running (see bg & fg)</dd>
+<dt>history</dt>
+<dd>list previously run commands (what did I just do??)</dd>
+<dt>echo "hello there!"</dt>
+<dd>print stuff to the screen</dd>
+<dt>echo {$ENVIRONMENT_VARIABLE}</dt>
+<dd>print the value</dd>
+<dt>echo $PATH</dt>
+<dd>prints the path bash uses to find commands for you</dd>
+</dl>
 
 ### About Other Things
 
-- `date`
-- `cal`
-- `cal 1752` - what's up with Sept?
+<dl>
+<dt>date`</dt>
+<dt>cal`</dt>
+<dt>cal 1752</dt>
+<dd>what's up with Sept?</dd>
+</dl>
 
 ## Actions
 
 ### Installing Things
 
-- `brew install [command]` - on mac
-- `apt-get install [command]` - on Debian and Raspbian
-- `apt-get install git` - for example
+<dl>
+<dt>brew install {command}</dt>
+<dd>on mac</dd>
+<dt>apt-get install {command}</dt>
+<dd>on Debian and Raspbian</dd>
+<dt>apt-get install git</dt>
+<dd>for example</dd>
+</dl>
 
 ### Stopping Things
 
-- `ctrl-z` - suspend the process that's in the foreground (put it to sleep 💤)
-- `ctrl-c` - kill the process that's in the foreground
-- `ctrl-d` - send an "end of file".  Last thing to try when you can't exit a program.  If you type it when nothing is running it will log you out.
-- `bg` - run the process you just stopped in the background
-- `fg` - bring a process in the background back to the foreground
-- `jobs` - list all the suspended commands
-- `fg %2` - bring suspended job number 2 back to the foreground
-- `kill %1` - kill the suspended job number 1
-- `kill [pid]` - tell the process to end.  If this doesn't work, use -9 flag
-- `kill -9 [pid]` - tell the operating system to kill the process immediately
-- `killall "Chrome"` - kill all processes with Chrome in the name
-- `shutdown -h +10` - shutdown (halt) the computer in 10 minutes
-- `shutdown -h now` - shutdown the computer now
-- `shutdown -r now` - reboot the computer now
-- `reboot` - Raspberry Pi only
-- `clear` - clear the screen, does not clear your history
+<dl>
+<dt>ctrl-z</dt>
+<dd>suspend the process that's in the foreground (put it to sleep 💤)</dd>
+<dt>ctrl-c</dt>
+<dd>kill the process that's in the foreground</dd>
+<dt>ctrl-d</dt>
+<dd>send an "end of file".  Last thing to try when you can't exit a program.  If you type it when nothing is running it will log you out.</dd>
+<dt>bg</dt>
+<dd>run the process you just stopped in the background</dd>
+<dt>fg</dt>
+<dd>bring a process in the background back to the foreground</dd>
+<dt>jobs</dt>
+<dd>list all the suspended commands</dd>
+<dt>fg %2</dt>
+<dd>bring suspended job number 2 back to the foreground</dd>
+<dt>kill %1</dt>
+<dd>kill the suspended job number 1</dd>
+<dt>kill {pid}</dt>
+<dd>tell the process to end.  If this doesn't work, use -9 flag</dd>
+<dt>kill -9 {pid}</dt>
+<dd>tell the operating system to kill the process immediately</dd>
+<dt>killall "Chrome"</dt>
+<dd>kill all processes with Chrome in the name</dd>
+<dt>shutdown -h +10</dt>
+<dd>shutdown (halt) the computer in 10 minutes</dd>
+<dt>shutdown -h now</dt>
+<dd>shutdown the computer now</dd>
+<dt>shutdown -r now</dt>
+<dd>reboot the computer now</dd>
+<dt>reboot</dt>
+<dd>Raspberry Pi only</dd>
+<dt>clear</dt>
+<dd>clear the screen, does not clear your history</dd>
+</dl>
 
 ### Git
 
-- `git clone [paste from github]` 
-- `git pull` 
-- `git status` 
-- `git add [file1] [file2]` 
-- `git commit -m "comment on what has changed with this commit"` 
-- `git push` 
+<dl>
+<dt>git clone {paste from github}` </dt>
+<dt>git pull` </dt>
+<dt>git status` </dt>
+<dt>git add {file1} {file2}` </dt>
+<dt>git commit -m "comment on what has changed with this commit"` </dt>
+<dt>git push` </dt>
+</dl>
 
 ### Mac Only
 
-- `say "some phrase"` - speaks the text
-- `[command] | say` - speaks the output of the command
-- `open [fileName]` - will open the file with the appropriate app, unzipping if necessary
-- `open [path]` - will open the directory specified.  Try `open .` and `open /`
+<dl>
+<dt>say "some phrase"</dt>
+<dd>speaks the text</dd>
+<dt>{command} | say</dt>
+<dd>speaks the output of the command</dd>
+<dt>open {fileName}</dt>
+<dd>will open the file with the appropriate app, unzipping if necessary</dd>
+<dt>open {path}</dt>
+<dd>will open the directory specified.  Try `open .` and `open /`</dd>
+</dl>
 
 ## Remote Administration
 
 ### Logging In and Out
 
-- `ssh-keygen` - generate an rsa key to use when logging in to a remote machine.  It will be saved in `~/.ssh/` Remember your passphrase if you want to log in again
-- `ssh [username]@[hostname]` example: `ssh holly@myDomain.com`
-- `ssh [username]@[ipAddress]` example: `ssh holly@192.168.1.32`
-- `ssh -l [username] [hostname]` example: `ssh -l holly myDomain.com`
-- `passwd` - helps you reset your password, does not help you remember it
-- `exit` - logout
-- `~.[enter]` - to restore your prompt after logging out if ssh hangs
+<dl>
+<dt>ssh-keygen</dt>
+<dd>generate an rsa key to use when logging in to a remote machine.  It will be saved in `~/.ssh/` Remember your passphrase if you want to log in again</dd>
+<dt>ssh {username}@{hostname}</dt>
+<dd>example: `ssh holly@myDomain.com`</dd>
+<dt>ssh {username}@{ipAddress}</dt>
+<dd>example: `ssh holly@192.168.1.32`</dd>
+<dt>ssh -l {username} {hostname}</dt>
+<dd>example: `ssh -l holly myDomain.com`</dd>
+<dt>passwd</dt>
+<dd>helps you reset your password, does not help you remember it</dd>
+<dt>exit</dt>
+<dd>logout</dd>
+<dt>~.{enter}</dt>
+<dd>to restore your prompt after logging out if ssh hangs</dd>
+</dl>
 
 You can set nicknames for hosts in `/etc/hosts` if you're feeling brave.
 
 ### File Transfer
 
-- `scp [from] [to]` - securely copy a file from one machine to another
-- `scp [fileName] [server]:[destinationDir]` - from your local machine to the server
-- `scp [server]:[filePath] [destinationDir]` - from the server to your local macine
-- `scp [server]:[filePath] .` - from the server to your current directory
-- `scp myFile 192.168.1.32:/home/holly/` - example, copy myFile to my home directory on a Raspberry Pi
-- `scp myFile myServer.myDomain.com:/home/holly/` 
+<dl>
+<dt>scp {from} {to}</dt>
+<dd>securely copy a file from one machine to another</dd>
+<dt>scp {fileName} {server}:{destinationDir}</dt>
+<dd>from your local machine to the server</dd>
+<dt>scp {server}:{filePath} {destinationDir}</dt>
+<dd>from the server to your local macine</dd>
+<dt>scp {server}:{filePath} .</dt>
+<dd>from the server to your current directory</dd>
+<dt>scp myFile 192.168.1.32:/home/holly/</dt>
+<dd>example, copy myFile to my home directory on a Raspberry Pi</dd>
+<dt>scp myFile myServer.myDomain.com:/home/holly/` </dt>
+</dl>
 
 On a Mac you can drag and drop a url from your browser onto the command line, so you don't have to type it.
 
-- `curl -O [url]` - download the file at the url, keeping it's name
-- `curl -o [newName] [url]` - download the file at the url, renaming it
-- `curl -O --continue [url]` - if you can't download the file because the connection keeps getting interrupted, `--continue` will make `curl` start again where it left off as soon as the connection is reestablished
-- `tar`
+<dl>
+<dt>curl -O {url}</dt>
+<dd>download the file at the url, keeping it's name</dd>
+<dt>curl -o {newName} {url}</dt>
+<dd>download the file at the url, renaming it</dd>
+<dt>curl -O --continue {url}</dt>
+<dd>if you can't download the file because the connection keeps getting interrupted, `--continue` will make `curl` start again where it left off as soon as the connection is reestablished</dd>
+<dt>tar</dt>
+</dl>
 
 ### Superuser
 
-- `sudo [command]` - run the command as root
+<dl>
+<dt>sudo {command}</dt>
+<dd>run the command as root</dd>
+</dl>
 
 ### Users and Groups
 
 The following commands must be run as root or with `sudo`.
 
-- `useradd -m [username] -p [password]` - add a user and assign them a password
+<dl>
+<dt>useradd -m {username} -p {password}</dt>
+<dd>add a user and assign them a password</dd>
+</dl>
 
 The user can then log on and use the `passwd` command to change their password.
 
-- `groupadd [groupname]` - add a group
-- `usermod -a -G [groupname] [username]` - put a user in a group, (append the user to the group)
+<dl>
+<dt>groupadd {groupname}</dt>
+<dd>add a group</dd>
+<dt>usermod -a -G {groupname} {username}</dt>
+<dd>put a user in a group, (append the user to the group)</dd>
+</dl>
 
 ## Odds and Ends
 
 ### Running Multiple Commands
 
-`&&` runs commands sequentially, so:
+<dl>
+<dt>&&</dt>
+<dd>runs commands sequentially, so</dd>
+</dl>
 
-- `[longRunningCommand] && say "I'm done"`
+```
+{longRunningCommand} && say "I'm done"
+```
 
 Pipe `|` "pipes" the output of the first command into the second command.
 
-`ls | less`
-	is useful for directories with so many files they scroll off the screen  
+<dl>
+<dt>ls | less</dt>
+<dd>is useful for directories with so many files they scroll off the screen  </dd>
+</dl>
 
 ### Typing Less
 
-- `!!` - bang-bang, run last command (same as up-arrow)
-- `[command] !! - run the command with the arguments of the last command
-- `file /long/path/to/file/do/not/want/to/type/again` - shows file type of `again`
-- `rm !!` - deletes the file `again` referenced in the previous command 
-- `sudo !!` - run the last command as root (this one is so useful some people alias it to "oops" or more colorful words  
-- `![string]` - run the command that is or starts with [string] exactly as it was run the last time (for when you don't want to type all the arguments again)
-- `!205` - run the command number 205 from your history
+<dl>
+<dt>!!</dt>
+<dd>bang-bang, run last command (same as up-arrow)</dd>
+<dt>{command} !!</dt>
+<dd>run the command with the arguments of the last command</dd>
+<dt>file /long/path/to/file/do/not/want/to/type/again</dt>
+<dd>shows file type of `again`</dd>
+<dt>rm !!</dt>
+<dd>deletes the file `again` referenced in the previous command </dd>
+<dt>sudo !!</dt>
+<dd>run the last command as root (this one is so useful some people alias it to "oops" or more colorful words  </dd>
+<dt>!{string}</dt>
+<dd>run the command that is or starts with {string} exactly as it was run the last time (for when you don't want to type all the arguments again)</dd>
+<dt>!205</dt>
+<dd>run the command number 205 from your history</dd>
+</dl>
 
 ## When Things Go Wrong
 
-- `q` - some commands quit on `q` (like less)
-- `ctrl-c` - quit current progam
-- `~.[enter]` - if you just quit ssh or lost your ssh connection and don't have a prompt
-- `stty sane` - if everything is weird, this sets the terminal configuration to something reasonable
-- `ctrl-d` - send end-of-file (last resort because it might log you out)
-- Abandon ship -- just close the terminal and open a new one. ¯\\\_(ツ)\_/¯
+<dl>
+<dt>q</dt>
+<dd>some commands quit on `q` (like less)</dd>
+<dt>ctrl-c</dt>
+<dd>quit current progam</dd>
+<dt>~.{enter}</dt>
+<dd>if you just quit ssh or lost your ssh connection and don't have a prompt</dd>
+<dt>stty sane</dt>
+<dd>if everything is weird, this sets the terminal configuration to something reasonable</dd>
+<dt>ctrl-d</dt>
+<dd>send end-of-file (last resort because it might log you out)</dd>
+</dl>
+
+Of course, you can always just close the terminal and open a new one. ¯\\\_(ツ)\_/¯
