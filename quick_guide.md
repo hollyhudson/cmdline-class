@@ -23,22 +23,16 @@ If you want to pass a string that has spaces, you can enclose it in quotes:
 
 ## Filesystem Navigation
 
-**ls**  
-	list files
-**file [fileName]**  
-	show file type
-**less [fileName]**  
-	a "pager" that shows contents of fileName (`q` to quit)
-**cd [directoryName]**  
-	change directory to directoryName
-**cd**  
-	with no arguments you'll go to your home directory
-**cd ..**  
-	go back to the parent directory
-**cd -**  
-	go back to where you were before you ran cd the last time
-**pwd**  
-	print working directory
+command | description
+------- | -----------
+ls | list files
+file [fileName] | show file type
+less [fileName] | a "pager" that shows contents of fileName (`q` to quit)
+cd [directoryName] | change directory to directoryName
+cd | with no arguments you'll go to your home directory
+cd .. | go back to the parent directory
+cd - | go back to where you were before you ran cd the last time
+pwd | print working directory
 
 If you lose your prompt, try `ctrl-c`.
 
@@ -46,22 +40,16 @@ If you lose your prompt, try `ctrl-c`.
 
 ### Creating, Deleting, and Moving Files
 
-__cp [originalFileName] [copyFileName]__  
-	copy (duplicate) a file
-__mv [oldFileName] [newFileName]__  
-	move (rename) a file
-__rm [fileName]__  
-	remove (delete) a file, use with caution
-__touch [fileName]__  
-	make a new, empty file, or update the timestamp on an existing file
-__mkdir [newDirName]__  
-	make a new, empty directory
-__cp -r [originalDir] [copyDir]__  
-	copy (duplicate, recursively) a directory, if copyDir exists it will now contain the contents of both directories
-__mv [oldDir] [newDir]__  
-	move (rename) a directory, if newDir exists oldDir will be placed inside newDir
-__rm -rf [dirName]__  
-	remove a directory, recursively, force it, be VERY careful with this command
+command | description
+------- | -----------
+cp {originalFileName} {copyFileName} | copy (duplicate) a file
+mv {oldFileName} {newFileName} | move (rename) a file
+rm {fileName} | remove (delete) a file, use with caution
+touch {fileName} | make a new, empty file, or update the timestamp on an existing file
+mkdir [newDirName] | make a new, empty directory
+cp -r [originalDir] [copyDir] | copy (duplicate, recursively) a directory, if copyDir exists it will now contain the contents of both directories
+mv [oldDir] [newDir] | move (rename) a directory, if newDir exists oldDir will be placed inside newDir
+rm -rf [dirName] | remove a directory, recursively, force it, be VERY careful with this command
 
 ### File Redirection
 
