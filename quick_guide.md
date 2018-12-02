@@ -1,15 +1,44 @@
 # Intro to the Command Line
 
+## Basic Structure of a Command
+
+```
+> command argument1 argument2 argument3[enter]
+```
+
+Arguments can be flags (settings for the command), filenames, paths, or strings.
+
+If your filename has a **space**, it will be treated like two arguments.  To prevent this you have to "escape" the space with a backslash.  So if you want to run a command on a file called `cute kitten.jpg` you have to do:
+
+```
+> command cute\ kitten.jpg
+```
+
+If you want to pass a string that has spaces, you can enclose it in quotes:
+
+```
+> say hello
+> say "hello world"
+```
+
 ## Filesystem Navigation
 
-- `ls` - list files
-- `file [fileName]` - show file type
-- `less [fileName]` - a "pager" that shows contents of fileName (`q` to quit)
-- `cd [directoryName]` - change directory to directoryName
-- `cd` - with no arguments you'll go to your home directory
-- `cd ..` - go back to the parent directory
-- `cd -` - go back to where you were before you ran cd the last time
-- `pwd` - print working directory
+__ls__ 
+	list files
+__file [fileName]__  
+	show file type
+__less [fileName]__  
+	a "pager" that shows contents of fileName (`q` to quit)
+__cd [directoryName]__  
+	change directory to directoryName
+__cd__  
+	with no arguments you'll go to your home directory
+__cd ..__  
+	go back to the parent directory
+__cd -__  
+	go back to where you were before you ran cd the last time
+__pwd__  
+	print working directory
 
 If you lose your prompt, try `ctrl-c`.
 
@@ -17,15 +46,22 @@ If you lose your prompt, try `ctrl-c`.
 
 ### Creating, Deleting, and Moving Files
 
-- `cp [originalFileName] [copyFileName]` - copy (duplicate) a file
-- `mv [oldFileName] [newFileName]` - move (rename) a file
-- `rm [fileName]` - remove (delete) a file, use with caution
-- `touch [fileName]` - make a new, empty file, or update the timestamp on an existing file
-- `mkdir [newDirName]` - make a new, empty directory
-
-- `cp -r [originalDir] [copyDir]` - copy (duplicate, recursively) a directory, if copyDir exists it will now contain the contents of both directories
-- `mv [oldDir] [newDir]` - move (rename) a directory, if newDir exists oldDir will be placed inside newDir
-- `rm -rf [dirName]` - remove a directory, recursively, force it, be VERY careful with this command
+__cp [originalFileName] [copyFileName]__  
+	copy (duplicate) a file
+__mv [oldFileName] [newFileName]__  
+	move (rename) a file
+__rm [fileName]__  
+	remove (delete) a file, use with caution
+__touch [fileName]__  
+	make a new, empty file, or update the timestamp on an existing file
+__mkdir [newDirName]__  
+	make a new, empty directory
+__cp -r [originalDir] [copyDir]__  
+	copy (duplicate, recursively) a directory, if copyDir exists it will now contain the contents of both directories
+__mv [oldDir] [newDir]__  
+	move (rename) a directory, if newDir exists oldDir will be placed inside newDir
+__rm -rf [dirName]__  
+	remove a directory, recursively, force it, be VERY careful with this command
 
 ### File Redirection
 
@@ -36,9 +72,7 @@ If you lose your prompt, try `ctrl-c`.
 - `echo "Here is some content" >> [fileName]` - append what's in quotes to fileName
 - `[command] > [fileName]` - send the output of the command to the file
 - `ls > [fileName]` - fileName now contains a list of files
-
 - `source [thisFile]` - execute commands in thisFile in this shell, useful for loading your bash config file
-
 - `nano`
 - `vi`
 
@@ -112,7 +146,6 @@ If you lose your prompt, try `ctrl-c`.
 
 - `brew install [command]` - on mac
 - `apt-get install [command]` - on Debian and Raspbian
-
 - `apt-get install git` - for example
 
 ### Stopping Things
@@ -132,7 +165,6 @@ If you lose your prompt, try `ctrl-c`.
 - `shutdown -h now` - shutdown the computer now
 - `shutdown -r now` - reboot the computer now
 - `reboot` - Raspberry Pi only
-
 - `clear` - clear the screen, does not clear your history
 
 ### Git
@@ -176,10 +208,9 @@ You can set nicknames for hosts in `/etc/hosts` if you're feeling brave.
 
 On a Mac you can drag and drop a url from your browser onto the command line, so you don't have to type it.
 
-`curl -O [url]` - download the file at the url, keeping it's name
-`curl -o [newName] [url]` - download the file at the url, renaming it
-`curl -O --continue [url]` - if you can't download the file because the connection keeps getting interrupted, `--continue` will make `curl` start again where it left off as soon as the connection is reestablished
-
+- `curl -O [url]` - download the file at the url, keeping it's name
+- `curl -o [newName] [url]` - download the file at the url, renaming it
+- `curl -O --continue [url]` - if you can't download the file because the connection keeps getting interrupted, `--continue` will make `curl` start again where it left off as soon as the connection is reestablished
 - `tar`
 
 ### Superuser
@@ -203,29 +234,28 @@ The user can then log on and use the `passwd` command to change their password.
 
 `&&` runs commands sequentially, so:
 
-- ``[longRunningCommand] && say "I'm done"
+- `[longRunningCommand] && say "I'm done"`
 
 Pipe `|` "pipes" the output of the first command into the second command.
 
 `ls | less`
 	is useful for directories with so many files they scroll off the screen  
 
-
+### Typing Less
 
 - `!!` - bang-bang, run last command (same as up-arrow)
 - `[command] !! - run the command with the arguments of the last command
 - `file /long/path/to/file/do/not/want/to/type/again` - shows file type of `again`
 - `rm !!` - deletes the file `again` referenced in the previous command 
-
-`sudo !!`
-	run the last command as root (this one is so useful some people alias it to "oops" or more colorful words  
-
+- `sudo !!` - run the last command as root (this one is so useful some people alias it to "oops" or more colorful words  
 - `![string]` - run the command that is or starts with [string] exactly as it was run the last time (for when you don't want to type all the arguments again)
 - `!205` - run the command number 205 from your history
 
 ## When Things Go Wrong
 
-- `ctrl-c` - /ctrl
-
-- `stty sane` - set the terminal configuration to something reasonable
-
+- `q` - some commands quit on `q` (like less)
+- `ctrl-c` - quit current progam
+- `~.[enter]` - if you just quit ssh or lost your ssh connection and don't have a prompt
+- `stty sane` - if everything is weird, this sets the terminal configuration to something reasonable
+- `ctrl-d` - send end-of-file (last resort because it might log you out)
+- Abandon ship -- just close the terminal and open a new one. ¯\\\_(ツ)\_/¯
