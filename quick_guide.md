@@ -23,7 +23,7 @@ If you want to pass a string that has spaces, you can enclose it in quotes:
 
 ## Filesystem Navigation
 
-**ls**   
+**ls**  
 	list files
 **file [fileName]**  
 	show file type
@@ -33,11 +33,11 @@ If you want to pass a string that has spaces, you can enclose it in quotes:
 	change directory to directoryName
 **cd**  
 	with no arguments you'll go to your home directory
-**cd ..**    
+**cd ..**  
 	go back to the parent directory
 **cd -**  
 	go back to where you were before you ran cd the last time
-**pwd**   
+**pwd**  
 	print working directory
 
 If you lose your prompt, try `ctrl-c`.
