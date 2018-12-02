@@ -23,7 +23,7 @@ If you want to pass a string that has spaces, you can enclose it in quotes:
 
 ## Filesystem Navigation
 
-__ls__ 
+__ls__   
 	list files
 __file [fileName]__  
 	show file type
