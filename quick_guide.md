@@ -8,6 +8,7 @@
 - `cd [directoryName]` - change directory to directoryName
 - `cd` - with no arguments you'll go to your home directory
 - `cd ..` - go back to the parent directory
+- `cd -` - go back to where you were before you ran cd the last time
 - `pwd` - print working directory
 
 If you lose your prompt, try `ctrl-c`.
@@ -51,13 +52,15 @@ If you lose your prompt, try `ctrl-c`.
 
 ### Symlinks
 
-- `ln -s`
+- `ln -s [originalFile] [symlinkFile]` - create a file that is just a link to another file
+- `ln -s ~/dotfiles/bashrc .bashrc` - make your .bashrc a symlink to the file in your dotfiles directory
 
 ## Getting Information
 
 ### About Commands
 
-- `which`
+- `ls -Flah` - list all files with all the details (aka "long list")
+- `which [command]` - shows you the path to the command, no output means either the command is not installed or it is not in your path
 - `man [command]` - show the manual page for the command (try man shutdown, for instance)
 - `[command] --version`
 - `[command] --help`
@@ -76,6 +79,7 @@ If you lose your prompt, try `ctrl-c`.
 
 ### About Your Computer
 
+- `uname -a` - print (all) information about the computer
 - `top` - list all process with memory and cpu usage (like Activity Monitor on the Mac or Task Manager on Windows)
 - `top -o cpu` - sort by cpu usage
 - `ps aux` - list all currently running processes
@@ -85,8 +89,8 @@ If you lose your prompt, try `ctrl-c`.
 
 ### About the Network
 
-- `ping`
-- `traceroute`
+- `ping [url]` - see if a server or site it up, will also report connection quality
+- `traceroute [url]` - report the path from your computer to the site or server
 
 ### About Your Environment
 
@@ -113,9 +117,14 @@ If you lose your prompt, try `ctrl-c`.
 
 ### Stopping Things
 
-- `ctrl-z` stop, but don't kill, a process
+- `ctrl-z` - suspend the process that's in the foreground (put it to sleep 💤)
+- `ctrl-c` - kill the process that's in the foreground
+- `ctrl-d` - send an "end of file".  Last thing to try when you can't exit a program.  If you type it when nothing is running it will log you out.
 - `bg` - run the process you just stopped in the background
 - `fg` - bring a process in the background back to the foreground
+- `jobs` - list all the suspended commands
+- `fg %2` - bring suspended job number 2 back to the foreground
+- `kill %1` - kill the suspended job number 1
 - `kill [pid]` - tell the process to end.  If this doesn't work, use -9 flag
 - `kill -9 [pid]` - tell the operating system to kill the process immediately
 - `killall "Chrome"` - kill all processes with Chrome in the name
@@ -165,9 +174,17 @@ You can set nicknames for hosts in `/etc/hosts` if you're feeling brave.
 - `scp myFile 192.168.1.32:/home/holly/` - example, copy myFile to my home directory on a Raspberry Pi
 - `scp myFile myServer.myDomain.com:/home/holly/` 
 
+On a Mac you can drag and drop a url from your browser onto the command line, so you don't have to type it.
+
+`curl -O [url]` - download the file at the url, keeping it's name
+`curl -o [newName] [url]` - download the file at the url, renaming it
+`curl -O --continue [url]` - if you can't download the file because the connection keeps getting interrupted, `--continue` will make `curl` start again where it left off as soon as the connection is reestablished
+
+- `tar`
+
 ### Superuser
 
-- `sudo [command]`
+- `sudo [command]` - run the command as root
 
 ### Users and Groups
 
@@ -182,13 +199,33 @@ The user can then log on and use the `passwd` command to change their password.
 
 ## Odds and Ends
 
+### Running Multiple Commands
+
+`&&` runs commands sequentially, so:
+
+- ``[longRunningCommand] && say "I'm done"
+
 Pipe `|` "pipes" the output of the first command into the second command.
 
-`ls | less` - is useful for directories with so many files they scroll off the screen
+`ls | less`
+	is useful for directories with so many files they scroll off the screen  
 
-- `!!` - bang-bang, run last command
+
+
+- `!!` - bang-bang, run last command (same as up-arrow)
 - `[command] !! - run the command with the arguments of the last command
 - `file /long/path/to/file/do/not/want/to/type/again` - shows file type of `again`
 - `rm !!` - deletes the file `again` referenced in the previous command 
-- `sudo !!` - run the last command as root (this one is so useful some people alias it to "oops" or more colorful words
-- `![command]` - run the command [command] exactly as it was run the last time (for when you don't want to type all the arguments again)
+
+`sudo !!`
+	run the last command as root (this one is so useful some people alias it to "oops" or more colorful words  
+
+- `![string]` - run the command that is or starts with [string] exactly as it was run the last time (for when you don't want to type all the arguments again)
+- `!205` - run the command number 205 from your history
+
+## When Things Go Wrong
+
+- `ctrl-c` - /ctrl
+
+- `stty sane` - set the terminal configuration to something reasonable
+
