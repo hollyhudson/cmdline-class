@@ -23,21 +23,21 @@ If you want to pass a string that has spaces, you can enclose it in quotes:
 
 ## Filesystem Navigation
 
-__ls__   
+**ls**   
 	list files
-__file [fileName]__  
+**file [fileName]**  
 	show file type
-__less [fileName]__  
+**less [fileName]**  
 	a "pager" that shows contents of fileName (`q` to quit)
-__cd [directoryName]__  
+**cd [directoryName]**  
 	change directory to directoryName
-__cd__  
+**cd**  
 	with no arguments you'll go to your home directory
-__cd ..__  
+**cd ..**    
 	go back to the parent directory
-__cd -__  
+**cd -**  
 	go back to where you were before you ran cd the last time
-__pwd__  
+**pwd**   
 	print working directory
 
 If you lose your prompt, try `ctrl-c`.
