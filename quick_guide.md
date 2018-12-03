@@ -393,7 +393,7 @@ If you lose your prompt, try `ctrl-c`.
 <tr>
 <td nowrap><tt>git clone <i>(paste from github)</i></tt></td>
 <td>copy a repo to your computer</td>
-<td rowspan="6"><img src="https://imgs.xkcd.com/comics/git.png" width="200">
+<td rowspan="6"><img src="https://imgs.xkcd.com/comics/git.png" width="250">
 </tr>
 <tr>
 <td><tt>git pull</tt></td>
@@ -475,7 +475,7 @@ If you lose your prompt, try `ctrl-c`.
 
 You can set nicknames for hosts in `/etc/hosts` if you're feeling brave.
 
-<img src="https://imgs.xkcd.com/comics/im_an_idiot.png" width="400">
+<img src="https://imgs.xkcd.com/comics/im_an_idiot.png" width="450">
 
 ### File Transfer
 
@@ -534,7 +534,7 @@ On a Mac you can drag and drop a url from your browser onto the command line, so
 </tr>
 </table>
 
-<img src="https://imgs.xkcd.com/comics/tar.png" width="400">
+<img src="https://imgs.xkcd.com/comics/tar.png" width="450">
 
 ### Superuser
 
