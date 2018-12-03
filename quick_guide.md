@@ -34,7 +34,7 @@ If you want to pass a string that has spaces, you can enclose it in quotes:
 </tr>
 <tr>
 <td><tt>less <i>fileName</i></tt></td>
-<td>a "pager" that shows contents of fileName (`q` to quit)</td>
+<td>a "pager" that shows contents of fileName (<tt>q</tt> to quit)</td>
 </tr>
 <tr>
 <td><tt>cd <i>directoryName</i></tt></td>
@@ -86,11 +86,11 @@ If you lose your prompt, try `ctrl-c`.
 </tr>
 <tr>
 <td nowrap><tt>cp -r <i>original</i> <i>copy</i></tt></td>
-<td>copy (duplicate, recursively) a directory, if copyDir exists it will now contain the contents of both directories</td>
+<td>copy, recursively a directory, if <tt><i>copy</i></tt> exists it will now contain the contents of both directories</td>
 </tr>
 <tr>
 <td><tt>mv <i>oldDir</i> <i>newDir</i></tt></td>
-<td>move (rename) a directory, if newDir exists oldDir will be placed inside newDir</td>
+<td>move (rename) a directory, if <tt><i>newDir</i></tt> exists <tt><i>oldDir</i></tt> will be placed inside <tt><i>newDir</i></tt></td>
 </tr>
 <tr>
 <td><tt>rm -rf <i>dirName</i></tt></td>
@@ -179,7 +179,7 @@ If you lose your prompt, try `ctrl-c`.
 </tr>
 <tr>
 <td nowrap><tt>which <i>command</i></tt></td>
-<td>shows you the path to the command, no output means either the command is not installed or it is not in your path</td>
+<td>shows you the path to the command if you have the command installed</td>
 </tr>
 <tr>
 <td nowrap><tt>man <i>command</i></tt></td>
@@ -203,27 +203,27 @@ If you lose your prompt, try `ctrl-c`.
 <td>a "pager" that shows contents of fileName (<tt>q</tt> to quit)</td>
 </tr>
 <tr>
-<td nowrap><tt>find <i>dirName</i> -name <i>fileName</i></tt></td>
-<td>find files recursively in dirName</td>
+<td nowrap><tt>find <i>dir</i> -name <i>file</i></tt></td>
+<td>find files recursively in <tt><i>dir</i></tt></td>
 </tr>
 <tr>
-<td><tt>find <i>dirName</i> -name *.png</tt></td>
-<td>find all png images in dirName</td>
+<td nowrap><tt>find <i>dir</i> -name *.png</tt></td>
+<td>find all png images in <tt><i>dir</i></tt></td>
 </tr>
 <tr>
-<td><tt>grep <i>string</i> *</tt></td>
+<td nowrap><tt>grep <i>string</i> *</tt></td>
 <td>show files in current directory that contain the string</td>
 </tr>
 <tr>
-<td><tt>grep -iR <i>string</i> <i>dirName</i></tt></td>
-<td>show files in dirName that contain the string, case-insensitive, recursively</td>
+<td nowrap><tt>grep -iR <i>string</i> <i>dir</i></tt></td>
+<td>show files in <tt><i>dir</i></tt> that contain the string, case-insensitive, recursively</td>
 </tr>
 <tr>
-<td><tt>grep <i>string</i> <i>dirName</i></tt></td>
-<td>show files in dirName that contain the string (word, number, or whatever)</td>
+<td><tt>grep <i>string</i> <i>dir</i></tt></td>
+<td>show files in <tt><i>dir</i></tt> that contain the string (word, number, or whatever)</td>
 </tr>
 <tr>
-<td><tt>grep <i>'with spaces'</i> <i>dirName</i></tt></td>
+<td nowrap><tt>grep <i>'with spaces'</i> <i>dir</i></tt></td>
 <td>if your string has spaces use quotes (single or double) </td>
 </tr>
 </table>
@@ -237,8 +237,7 @@ If you lose your prompt, try `ctrl-c`.
 </tr>
 <tr>
 <td><tt>top</tt></td>
-<td>list all process with memory and cpu usage (like Activity Monitor on the Mac or Task Manager on Windows)</td>
-</tr>
+<td>show cpu and memory use of processes (like Activity Monitor or Task Manager)</td> </tr>
 <tr>
 <td><tt>top -o cpu</tt></td>
 <td>sort by cpu usage</td>
@@ -253,7 +252,7 @@ If you lose your prompt, try `ctrl-c`.
 </tr>
 <tr>
 <td><tt>du -h <i>dirName</i></tt></td>
-<td>show sizes of all files in dirName with human-readable units (useful if you're trying to delete large files because you've run out of space)</td>
+<td>show sizes of all files in dirName with human-readable units</td>
 </tr>
 <tr>
 <td><tt>df -h</tt></td>
@@ -339,66 +338,50 @@ If you lose your prompt, try `ctrl-c`.
 
 <table>
 <tr>
-<td><tt>ctrl-z</tt></td>
+<td><tt>bg</tt></td>
+<td>run a suspended process in the background</td>
+<td nowrap><tt>ctrl-z</tt></td>
 <td>suspend the process that's in the foreground (put it to sleep 💤)</td>
 </tr>
 <tr>
+<td><tt>fg</tt></td>
+<td>bring a process to the foreground</td>
 <td><tt>ctrl-c</tt></td>
 <td>kill the process that's in the foreground</td>
 </tr>
 <tr>
+<td><tt>jobs</tt></td>
+<td>list all suspended commands</td>
 <td><tt>ctrl-d</tt></td>
 <td>send an "end of file".  Last thing to try when you can't exit a program.  If you type it when nothing is running it will log you out.</td>
 </tr>
 <tr>
-<td><tt>bg</tt></td>
-<td>run the process you just stopped in the background</td>
-</tr>
-<tr>
-<td><tt>fg</tt></td>
-<td>bring a process in the background back to the foreground</td>
-</tr>
-<tr>
-<td><tt>jobs</tt></td>
-<td>list all the suspended commands</td>
-</tr>
-<tr>
 <td><tt>fg %2</tt></td>
-<td>bring suspended job number 2 back to the foreground</td>
-</tr>
-<tr>
-<td><tt>kill %1</tt></td>
-<td>kill the suspended job number 1</td>
-</tr>
-<tr>
-<td><tt>kill <i>pid</i></tt></td>
-<td>tell the process to end.  If this doesn't work, use -9 flag</td>
-</tr>
-<tr>
-<td nowrap><tt>kill -9 <i>pid</i></tt></td>
-<td>tell the operating system to kill the process immediately</td>
-</tr>
-<tr>
-<td nowrap><tt>killall "Chrome"</tt></td>
-<td>kill all processes with Chrome in the name</td>
-</tr>
-<tr>
+<td>foreground job 2</td>
 <td><tt>shutdown -h +10</tt></td>
 <td>shutdown (halt) the computer in 10 minutes</td>
 </tr>
 <tr>
-<td><tt>shutdown -h now</tt></td>
+<td><tt>kill %1</tt></td>
+<td>kill job 1</td>
+<td nowrap><tt>shutdown -h now</tt></td>
 <td>shutdown the computer now</td>
 </tr>
 <tr>
-<td><tt>shutdown -r now</tt></td>
+<td><tt>kill <i>pid</i></tt></td>
+<td>ask the process to end</td>
+<td nowrap><tt>shutdown -r now</tt></td>
 <td>reboot the computer now</td>
 </tr>
 <tr>
+<td nowrap><tt>kill -9 <i>pid</i></tt></td>
+<td>tell the operating system to kill the process immediately</td>
 <td><tt>reboot</tt></td>
 <td>Raspberry Pi only</td>
 </tr>
 <tr>
+<td nowrap><tt>killall "Chrome"</tt></td>
+<td>kill all processes with Chrome in the name</td>
 <td><tt>clear</tt></td>
 <td>clear the screen, does not clear your history</td>
 </tr>
@@ -461,19 +444,19 @@ If you lose your prompt, try `ctrl-c`.
 <table>
 <tr>
 <td><tt>ssh-keygen</tt></td>
-<td>generate an rsa key to use when logging in to a remote machine.  It will be saved in `~/.ssh/` Remember your passphrase if you want to log in again</td>
+<td>generate an rsa key to use when logging in to a remote machine.  It will be saved in <tt>~/.ssh/</tt> Remember your passphrase if you want to log in again.</td>
 </tr>
 <tr>
 <td nowrap><tt>ssh <i>username</i>@<i>hostname</i></tt></td>
-<td>example: `ssh holly@myDomain.com`</td>
+<td>example: <tt>ssh holly@host.myDomain.com</tt></td>
 </tr>
 <tr>
 <td nowrap><tt>ssh <i>username</i>@<i>ipAddress</i></tt></td>
-<td>example: `ssh holly@192.168.1.32`</td>
+<td>example: <tt>ssh holly@192.168.1.32</tt></td>
 </tr>
 <tr>
 <td nowrap><tt>ssh -l <i>username</i> <i>hostname</i></tt></td>
-<td>example: `ssh -l holly myDomain.com`</td>
+<td>example: <tt>ssh -l holly host.myDomain.com</tt></td>
 </tr>
 <tr>
 <td><tt>passwd</tt></td>
@@ -527,11 +510,11 @@ On a Mac you can drag and drop a url from your browser onto the command line, so
 <td>download the file at the url, keeping it's name</td>
 </tr>
 <tr>
-<td><tt>curl -o <i>newName</i> <i>url</i></tt></td>
+<td nowrap><tt>curl -o <i>newName</i> <i>url</i></tt></td>
 <td>download the file at the url, renaming it</td>
 </tr>
 <tr>
-<td><tt>curl -O --continue <i>url</i></tt></td>
+<td nowrap><tt>curl -O --continue <i>url</i></tt></td>
 <td>if you can't download the file because the connection keeps getting interrupted, <tt>--continue</tt> will make <tt>curl</tt> start again where it left off as soon as the connection is reestablished</td>
 </tr>
 <tr>
@@ -616,7 +599,7 @@ Pipe `|` "pipes" the output of the first command into the second command.
 <td>run the command number 205 from your history</td>
 </tr>
 <tr>
-<td><tt><i>command</i> !!</tt></td>
+<td nowrap><tt><i>command</i> !!</tt></td>
 <td>run the command with the arguments of the last command</td>
 </tr>
 </table>
