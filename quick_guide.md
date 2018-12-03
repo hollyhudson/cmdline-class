@@ -391,8 +391,9 @@ If you lose your prompt, try `ctrl-c`.
 
 <table>
 <tr>
-<td><tt>git clone <i>(paste from github)</i></tt></td>
+<td nowrap><tt>git clone <i>(paste from github)</i></tt></td>
 <td>copy a repo to your computer</td>
+<td rowspan="6"><img src="https://imgs.xkcd.com/comics/git.png" width="200">
 </tr>
 <tr>
 <td><tt>git pull</tt></td>
@@ -403,7 +404,7 @@ If you lose your prompt, try `ctrl-c`.
 <td>check the status of the files in your repo</td>
 </tr>
 <tr>
-<td><tt>git add <i>file1</i> <i>file2</i></tt></td>
+<td nowrap><tt>git add <i>file1</i> <i>file2</i></tt></td>
 <td>mark files to be committed</td>
 </tr>
 <tr>
@@ -474,6 +475,8 @@ If you lose your prompt, try `ctrl-c`.
 
 You can set nicknames for hosts in `/etc/hosts` if you're feeling brave.
 
+<img src="https://imgs.xkcd.com/comics/im_an_idiot.png" width="400">
+
 ### File Transfer
 
 <table>
@@ -518,9 +521,20 @@ On a Mac you can drag and drop a url from your browser onto the command line, so
 <td>if you can't download the file because the connection keeps getting interrupted, <tt>--continue</tt> will make <tt>curl</tt> start again where it left off as soon as the connection is reestablished</td>
 </tr>
 <tr>
-<td><tt>tar</tt></td>
+<td nowrap><tt>tar zcvf <i>file.tar.gz path</i></tt></td>
+<td>compress files (and directories) at the end of the path into a zipped tarfile</td>
+</tr>
+<tr>
+<td><tt>tar xvf <i>file.tar.gz</i></tt></td>
+<td>unpack the files from a tarfile into the current directory</td>
+</tr>
+<tr>
+<td><tt>tar tvf <i>file.tar.gz</i></tt></td>
+<td>list the contents of a tarfile</td>
 </tr>
 </table>
+
+<img src="https://imgs.xkcd.com/comics/tar.png" width="400">
 
 ### Superuser
 
@@ -639,3 +653,5 @@ Example of the last one in use:
 </table>
 
 Of course, you can always just close the terminal and open a new one. ¯\\\_(ツ)\_/¯
+
+_Comics from xkcd.com_
