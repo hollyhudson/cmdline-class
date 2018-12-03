@@ -1,18 +1,26 @@
-file name and paths
+Finder beside the terminal for basic navigation
 
 tab completion and ^ for previous command
 
+file naming conventions (no spaces)
+file name and paths
+
 file system structure and the home and root directories
 
-file naming conventions (no spaces)
+ls, cd, less, file, top, du, df, ll
 
-bash config files
+permissions, users, root, groups historical context
+
+nano and other editors - edit a file
 
 editors and editor config file
 
-ssh
+ssh - get on the pi
 
-permissions, users, root, groups historical context
+look around
+
+bash config files - show how to replace the one on your computer, and go through the files to talk about the options
+
 
 terms:
 - recursive

@@ -584,7 +584,7 @@ The user can then log on and use the `passwd` command to change their password.
 </table>
 
 ```
-<i>longRunningCommand</i> && say "I'm done"
+sl && say "Ha ha ha"
 ```
 
 Pipe `|` "pipes" the output of the first command into the second command.
@@ -604,18 +604,6 @@ Pipe `|` "pipes" the output of the first command into the second command.
 <td>bang-bang, run last command (same as up-arrow)</td>
 </tr>
 <tr>
-<td><tt><i>command</i> !!</tt></td>
-<td>run the command with the arguments of the last command</td>
-</tr>
-<tr>
-<td><tt>file /long/path/to/file/do/not/want/to/type/again</tt></td>
-<td>shows file type of `again`</td>
-</tr>
-<tr>
-<td><tt>rm !!</tt></td>
-<td>deletes the file `again` referenced in the previous command </td>
-</tr>
-<tr>
 <td><tt>sudo !!</tt></td>
 <td>run the last command as root (this one is so useful some people alias it to "oops" or more colorful words  </td>
 </tr>
@@ -627,14 +615,27 @@ Pipe `|` "pipes" the output of the first command into the second command.
 <td><tt>!205</tt></td>
 <td>run the command number 205 from your history</td>
 </tr>
+<tr>
+<td><tt><i>command</i> !!</tt></td>
+<td>run the command with the arguments of the last command</td>
+</tr>
 </table>
+
+Example of the last one in use:
+
+```
+> file /long/path/to/file/do/not/want/to/type/again
+# returns the file type
+> rm !!
+# deletes that file without having to type the long path again
+```
 
 ## When Things Go Wrong
 
 <table>
 <tr>
 <td><tt>q</tt></td>
-<td>some commands quit on `q` (like less)</td>
+<td>some commands quit on <tt>q</tt> (like <tt>less</tt>)</td>
 <tr>
 </tr>
 <td><tt>ctrl-c</tt></td>
@@ -645,7 +646,7 @@ Pipe `|` "pipes" the output of the first command into the second command.
 <td>if you just quit ssh or lost your ssh connection and don't have a prompt</td>
 <tr>
 </tr>
-<td><tt>stty sane</tt></td>
+<td nowrap><tt>stty sane</tt></td>
 <td>if everything is weird, this sets the terminal configuration to something reasonable</td>
 <tr>
 </tr>
