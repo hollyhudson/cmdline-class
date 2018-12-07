@@ -1,9 +1,12 @@
+todo:
+- give everyone a known hosts file, and teach them to add the digital ocean instance and the pi
+- put an executable in their home directory that they have to chmod to use
+
+find an interesting log to tail 
+
 Finder beside the terminal for basic navigation
 
 tab completion and ^ for previous command
-
-file naming conventions (no spaces)
-file name and paths
 
 file system structure and the home and root directories
 
@@ -21,6 +24,13 @@ look around
 
 bash config files - show how to replace the one on your computer, and go through the files to talk about the options
 
+Review:
+
+Can you:
+- in one command, put a list of all the files in your home directory into a file called myList?
+- find the command you ran 6 commands ago?
+- find the process number for your login and kill it
+- now log back in
 
 terms:
 - recursive

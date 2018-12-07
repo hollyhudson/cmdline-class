@@ -3,23 +3,22 @@
 ## Basic Structure of a Command
 
 ```
-> command argument1 argument2 argument3[enter]
+> command parameter1 parameter2 parameter3[enter]
 ```
 
-Arguments can be flags (settings for the command), filenames, paths, or strings.
+Parameters can be options (aka flags, settings for the command), or arguments like filenames, paths, and strings.
 
-If your filename has a **space**, it will be treated like two arguments.  To prevent this you have to "escape" the space with a backslash.  So if you want to run a command on a file called `cute kitten.jpg` you have to do:
+If your argument has a **space** in it, it will be treated like two arguments.  To prevent this you have to "escape" the space with a backslash or enclose the argument in quotes (single or double).  So for instance:
 
 ```
 > command cute\ kitten.jpg
+> command 'cute kitten.jpg'
+
+> say hello\ world
+> say 'hello world'
 ```
 
-If you want to pass a string that has spaces, you can enclose it in quotes:
-
-```
-> say hello
-> say "hello world"
-```
+This is why in the Unix/Linux world no one puts spaces in their file names.
 
 ## Filesystem Navigation
 
@@ -34,11 +33,11 @@ If you want to pass a string that has spaces, you can enclose it in quotes:
 </tr>
 <tr>
 <td><tt>less <i>fileName</i></tt></td>
-<td>a "pager" that shows contents of fileName (<tt>q</tt> to quit)</td>
+<td>a "pager" that shows contents of <tt><i>fileName</i></tt> (<tt>q</tt> to quit)</td>
 </tr>
 <tr>
 <td><tt>cd <i>directoryName</i></tt></td>
-<td>change directory to directoryName</td>
+<td>change directory to <tt><i>directoryName</i></tt></td>
 </tr>
 <tr>
 <td><tt>cd</tt></td>
@@ -49,7 +48,7 @@ If you want to pass a string that has spaces, you can enclose it in quotes:
 </tr>
 <tr>
 <td><tt>cd -</tt></td>
-<td>go back to where you were before you ran cd the last time</td>
+<td>go back to where you were before you ran <tt>cd</tt> the last time</td>
 </tr>
 <tr>
 <td><tt>pwd</tt></td>
@@ -67,6 +66,7 @@ If you lose your prompt, try `ctrl-c`.
 <tr>
 <td nowrap><tt>cp <i>original</i> <i>copy</i></tt></td>
 <td>copy (duplicate) a file</td>
+<td rowspan="8"><img src="https://imgs.xkcd.com/comics/still_in_use.png" width="200"></td>
 </tr>
 <tr>
 <td nowrap><tt>mv <i>oldFile</i> <i>newFile</i></tt></td>
@@ -94,7 +94,7 @@ If you lose your prompt, try `ctrl-c`.
 </tr>
 <tr>
 <td><tt>rm -rf <i>dirName</i></tt></td>
-<td>remove a directory, recursively, force it, be VERY careful with this command</td>
+<td>remove a directory, recursively, force it, be VERY careful with this command, there is no undo</td>
 </table>
 
 ### File Redirection
@@ -102,23 +102,23 @@ If you lose your prompt, try `ctrl-c`.
 <table>
 <tr>
 <td><tt>cat <i>fileName</i></tt></td>
-<td>print contents of fileName to the screen (like less, but not as nice)</td>
+<td>print contents of <tt><i>fileName</i></tt> to the screen (like less, but not as nice)</td>
 </tr>
 <tr>
 <td nowrap><tt>cat <i>thisFile</i> > <i>thatFile</i></tt></td>
-<td>overwrite thatFile with the contents of thisFile, unless "noclobber" is set</td>
+<td>overwrite <tt><i>thatFile</i></tt> with the contents of <tt><i>thisFile</i></tt>, unless "noclobber" is set</td>
 </tr>
 <tr>
 <td nowrap><tt>cat <i>thisFile</i> >> <i>thatFile</i></tt></td>
-<td>append the contents of thisFile to thatFile</td>
+<td>append the contents of <tt><i>thisFile</i></tt> to <tt><i>thatFile</i></tt></td>
 </tr>
 <tr>
 <td nowrap><tt>echo "Some text" > <i>fileName</i></tt></td>
-<td>overwrite fileName with the content in quotes, unless "noclobber" is set</td>
+<td>overwrite <tt><i>fileName</i><tt> with the content in quotes, unless "noclobber" is set</td>
 </tr>
 <tr>
 <td nowrap><tt>echo "Some text" >> <i>fileName</i></td>
-<td>append what's in quotes to fileName</td>
+<td>append what's in quotes to <tt><i>fileName</i></tt></td>
 </tr>
 <tr>
 <td><tt><i>command</i> > <i>fileName</i></tt></td>
@@ -126,11 +126,11 @@ If you lose your prompt, try `ctrl-c`.
 </tr>
 <tr>
 <td><tt>ls > <i>fileName</i></tt></td>
-<td>fileName now contains a list of files</td>
+<td><tt><i>fileName</i></tt> now contains a list of files</td>
 </tr>
 <tr>
 <td><tt>source <i>thisFile</i></tt></td>
-<td>execute commands in thisFile in this shell, useful for loading your bash config file</td>
+<td>execute commands in <tt><i>thisFile</i></tt> in this shell, useful for loading your bash config file</td>
 </tr>
 </table>
 
@@ -151,7 +151,7 @@ If you lose your prompt, try `ctrl-c`.
 </tr>
 <tr>
 <td><tt>chown <i>user</i> <i>fileName</i></tt></td>
-<td>give ownership of fileName to user: <tt>chown frodo rings/the_one</tt></td>
+<td>give ownership of <tt><i>fileName</i></tt> to user, must be run as root</td>
 </tr>
 </table>
 
@@ -164,7 +164,7 @@ If you lose your prompt, try `ctrl-c`.
 </tr>
 <tr>
 <td nowrap><tt>ln -s ~/dotfiles/bashrc .bashrc</tt></td>
-<td>make your .bashrc a symlink to the file in your dotfiles directory</td>
+<td>make your <tt><i>.bashrc</i></tt> a symlink to the file in your dotfiles directory</td>
 </tr>
 </table>
 
@@ -183,7 +183,7 @@ If you lose your prompt, try `ctrl-c`.
 </tr>
 <tr>
 <td nowrap><tt>man <i>command</i></tt></td>
-<td>show the manual page for the command (try man shutdown, for instance)</td>
+<td>show the manual page for the command (try <tt>man shutdown</tt>, for instance)</td>
 </tr>
 <tr>
 <td><tt>tldr <i>command</i></tt></td>
@@ -200,14 +200,14 @@ If you lose your prompt, try `ctrl-c`.
 </tr>
 <tr>
 <td><tt>less <i>fileName</i></tt></td>
-<td>a "pager" that shows contents of fileName (<tt>q</tt> to quit)</td>
+<td>a "pager" that shows contents of <tt><i>fileName</i></tt> (<tt>q</tt> to quit)</td>
 </tr>
 <tr>
 <td nowrap><tt>find <i>dir</i> -name <i>file</i></tt></td>
 <td>find files recursively in <tt><i>dir</i></tt></td>
 </tr>
 <tr>
-<td nowrap><tt>find <i>dir</i> -name *.png</tt></td>
+<td nowrap><tt>find <i>dir</i> -name '*.png'</tt></td>
 <td>find all png images in <tt><i>dir</i></tt></td>
 </tr>
 <tr>
@@ -252,7 +252,7 @@ If you lose your prompt, try `ctrl-c`.
 </tr>
 <tr>
 <td><tt>du -h <i>dirName</i></tt></td>
-<td>show sizes of all files in dirName with human-readable units</td>
+<td>show sizes of all files in <tt><i>dirName</i></tt> with human-readable units</td>
 </tr>
 <tr>
 <td><tt>df -h</tt></td>
@@ -265,7 +265,7 @@ If you lose your prompt, try `ctrl-c`.
 <table>
 <tr>
 <td><tt>ping <i>url</i></tt></td>
-<td>see if a server or site it up, will also report connection quality</td>
+<td>see if a server or site is up, will also report connection quality</td>
 </tr>
 <tr>
 <td><tt>traceroute <i>url</i></tt></td>
@@ -278,7 +278,7 @@ If you lose your prompt, try `ctrl-c`.
 <table>
 <tr>
 <td><tt>jobs</tt></td>
-<td>list all processes your user is currently running (see bg & fg)</td>
+<td>list all processes you're running in the current shell (see <tt>bg</tt> & <tt>fg</tt>)</td>
 </tr>
 <tr>
 <td><tt>history</tt></td>
@@ -338,52 +338,52 @@ If you lose your prompt, try `ctrl-c`.
 
 <table>
 <tr>
-<td><tt>bg</tt></td>
-<td>run a suspended process in the background</td>
-<td nowrap><tt>ctrl-z</tt></td>
-<td>suspend the process that's in the foreground (put it to sleep 💤)</td>
+<td><tt>clear</tt></td>
+<td>clear the screen, does not clear your history</td>
+<td><tt>kill %1</tt></td>
+<td>kill job 1</td>
 </tr>
 <tr>
-<td><tt>fg</tt></td>
-<td>bring a process to the foreground</td>
+<td nowrap><tt>ctrl-z</tt></td>
+<td>suspend the process that's in the foreground (put it to sleep 💤)</td>
+<td><tt>kill <i>pid</i></tt></td>
+<td>ask the process to end</td>
+</tr>
+<tr>
 <td><tt>ctrl-c</tt></td>
 <td>kill the process that's in the foreground</td>
+<td nowrap><tt>kill -9 <i>pid</i></tt></td>
+<td>tell the operating system to kill the process immediately</td>
+</tr>
+<tr>
+<td><tt>ctrl-d</tt></td>
+<td>send an "end of file".  Last thing to try when you can't exit a program.  If you type it when nothing is running it will log you out.</td>
+<td nowrap><tt>killall "Chrome"</tt></td>
+<td>kill all processes with Chrome in the name</td>
 </tr>
 <tr>
 <td><tt>jobs</tt></td>
 <td>list all suspended commands</td>
-<td><tt>ctrl-d</tt></td>
-<td>send an "end of file".  Last thing to try when you can't exit a program.  If you type it when nothing is running it will log you out.</td>
-</tr>
-<tr>
-<td><tt>fg %2</tt></td>
-<td>foreground job 2</td>
 <td><tt>shutdown -h +10</tt></td>
 <td>shutdown (halt) the computer in 10 minutes</td>
 </tr>
 <tr>
-<td><tt>kill %1</tt></td>
-<td>kill job 1</td>
+<td><tt>bg</tt></td>
+<td>run a suspended process in the background</td>
 <td nowrap><tt>shutdown -h now</tt></td>
 <td>shutdown the computer now</td>
 </tr>
 <tr>
-<td><tt>kill <i>pid</i></tt></td>
-<td>ask the process to end</td>
+<td><tt>fg</tt></td>
+<td>bring a process to the foreground</td>
 <td nowrap><tt>shutdown -r now</tt></td>
 <td>reboot the computer now</td>
 </tr>
 <tr>
-<td nowrap><tt>kill -9 <i>pid</i></tt></td>
-<td>tell the operating system to kill the process immediately</td>
+<td><tt>fg %2</tt></td>
+<td>foreground job 2</td>
 <td><tt>reboot</tt></td>
 <td>Raspberry Pi only</td>
-</tr>
-<tr>
-<td nowrap><tt>killall "Chrome"</tt></td>
-<td>kill all processes with Chrome in the name</td>
-<td><tt>clear</tt></td>
-<td>clear the screen, does not clear your history</td>
 </tr>
 </table>
 
@@ -445,7 +445,7 @@ If you lose your prompt, try `ctrl-c`.
 <table>
 <tr>
 <td><tt>ssh-keygen</tt></td>
-<td>generate an rsa key to use when logging in to a remote machine.  It will be saved in <tt>~/.ssh/</tt> Remember your passphrase if you want to log in again.</td>
+<td>generate an rsa key to use when logging in to a remote machine.  It will be saved in <tt>~/.ssh/</tt> Remember your passphrase if you want to log in again😉</td>
 </tr>
 <tr>
 <td nowrap><tt>ssh <i>username</i>@<i>hostname</i></tt></td>
