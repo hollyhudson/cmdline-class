@@ -1,15 +1,19 @@
-
 iterm2
+A nice alternative to Apple's terminal program.
 https://iterm2.com
 
 trans (translate-shell)
+Get translations on the command line.  Highly customizable, including what site it gets the translation from (I like deepl.com for European languages, for instance).
 https://github.com/soimort/translate-shell
 
 tldr.sh
+Like man pages, but easier to deal with.  They list examples of how to use the command for some of its most common uses. 
 https://tldr.sh
 
 Awesome Shell
+Compendium of awesome shell stuff.
 https://github.com/alebcay/awesome-shell
 
 Awesome Bash
+Compendium of awesome bash stuff.
 https://github.com/awesome-lists/awesome-bash

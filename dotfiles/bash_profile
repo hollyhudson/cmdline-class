@@ -51,9 +51,9 @@ set -o noclobber
 # Aliases
 #########################################################################
 
-# G is for colored output
-alias ls="ls -G"
-# alias ls='ls --color' # for linux
+# G is for colored output on macOS
+# alias ls="ls -G" # for mac
+alias ls='ls --color' # for linux
 
 # Configure the colors ls uses.  See man ls to see what the setting mean
 export LSCOLORS="Exfxcxdxbxegedabagacad"
@@ -61,7 +61,8 @@ export LSCOLORS="Exfxcxdxbxegedabagacad"
 # F: with symbols, l: long, a: all, including dotfiles, h: human-readable units
 alias ll="ls -FlahG"
 
-# you can specify a path for a command if you need to with an alias
+# alias example with a path, becomes sometimes you have more than one version
+# of the command installed
 # alias vi="/usr/bin/vi"
 
 alias timenyc="TZ=America/New_York date"
