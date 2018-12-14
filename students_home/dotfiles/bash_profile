@@ -98,6 +98,9 @@ export PS1="\h:\w: "
 
 # some fun unicode characters set to variables so they're easier to include
 # in the prompt
+# to get these codes representing emojis:
+# echo -n [paste emoji here] | xxd -g1
+source ~/dotfiles/colors_for_bash
 U_FLOWER="\342\235\200"  # fancy unicode character for the prompt
 U_SPLAT="\342\234\273"  # fancy unicode character for the prompt
 U_BIGSPLAT="\342\235\211"  # fancy unicode character for the prompt
