@@ -1,0 +1,20 @@
+# This file's path should be ~/.ssh/config
+
+# This file stores settings for ssh so you don't have to type long
+# commands everytime you ssh somewhere.
+#
+# All the options are described here:
+# https://linux.die.net/man/5/ssh_config
+
+# Example:
+#
+# Host	[name of server]
+# 	user	[your username on the server]
+# 	Hostname 	[ip address of the server]
+# 	Port	[default is 22 unless you changed it]
+# 	IdentityFile 	[~/.ssh/id_rsa usually]
+
+# Most of the time, this is all you'll really need:
+Host	gibson
+	user	pi
+	Hostname	10.0.1.70

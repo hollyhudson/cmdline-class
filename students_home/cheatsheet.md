@@ -74,7 +74,7 @@ If you lose your prompt, try `ctrl-c`.
 </tr>
 <tr>
 <td><tt>rm <i>fileName</i></tt></td>
-<td>remove (delete) a file, use with caution</td>
+<td>remove (delete) a file, use with caution, there is no trash</td>
 </tr>
 <tr>
 <td><tt>touch <i>fileName</i></tt></td>
@@ -93,8 +93,8 @@ If you lose your prompt, try `ctrl-c`.
 <td>move (rename) a directory, if <tt><i>newDir</i></tt> exists <tt><i>oldDir</i></tt> will be placed inside <tt><i>newDir</i></tt></td>
 </tr>
 <tr>
-<td><tt>rm -rf <i>dirName</i></tt></td>
-<td>remove a directory, recursively, force it, be VERY careful with this command, there is no undo</td>
+<td><tt>rm -ri <i>dirName</i></tt></td>
+<td>Remove a directory, recursively, with verification. You can also force it (no verification) with <tt>-rf</tt>, but be VERY careful with this command, there is no undo</td>
 </table>
 
 ### File Redirection
@@ -473,7 +473,7 @@ If you lose your prompt, try `ctrl-c`.
 </tr>
 </table>
 
-You can set nicknames for hosts in `/etc/hosts` if you're feeling brave.
+You can set up nicknames and settings for hosts you frequently log into in your <tt>~/.ssh/config</tt> file.
 
 <img src="https://imgs.xkcd.com/comics/im_an_idiot.png" width="450">
 
@@ -521,6 +521,10 @@ On a Mac you can drag and drop a url from your browser onto the command line, so
 <td>if you can't download the file because the connection keeps getting interrupted, <tt>--continue</tt> will make <tt>curl</tt> start again where it left off as soon as the connection is reestablished</td>
 </tr>
 <tr>
+<td nowrap><tt>curl ifconfig.co</tt></td>
+<td>shows your external ip address, same as www.whatismyip.com</td>
+</tr>
+<tr>
 <td nowrap><tt>tar zcvf <i>file.tar.gz path</i></tt></td>
 <td>compress files (and directories) at the end of the path into a zipped tarfile</td>
 </tr>
@@ -554,11 +558,10 @@ The following commands must be run as root or with `sudo`.
 <td><tt>useradd -m <i>username</i> -p <i>password</i></tt></td>
 <td>add a user and assign them a password</td>
 </tr>
-</table>
-
-The user can then log on and use the `passwd` command to change their password.
-
-<table>
+<tr>
+<td><tt>passwd <i>username</i></tt></td>
+<td>give a user a password, or use without <tt><i>username</i></tt> to change your own password</td>
+</tr>
 <tr>
 <td><tt>groupadd <i>groupname</i></tt></td>
 <td>add a group</td>
